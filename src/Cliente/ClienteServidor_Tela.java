@@ -267,7 +267,7 @@ public class ClienteServidor_Tela extends javax.swing.JFrame {
     private void jButtonConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConectarActionPerformed
         try {
             //Informações do Jogador para Envio ao Servidor
-            ClienteServidor.get().iniciarConexao(String.valueOf(ClienteDados.get().getIp()));
+            ClienteServidor.get().iniciarConexao(jTextFieldIp.getText());
             Dados jogador = new Dados();
             jogador.setAction(Action.CONECTAR);
             jogador.setNome(ClienteDados.get().getNome());
