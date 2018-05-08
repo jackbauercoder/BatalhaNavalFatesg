@@ -225,6 +225,9 @@ public class ServidorSocket extends javax.swing.JFrame {
     public void setAtualizarJogo() {
         Dados jogadorAtualizar = new Dados();
         jogadorAtualizar.setAction(Action.ATUALIZAR_JOGO);
+        for(int i=0;i<Jogo.getJogo().getPosicoesPreenchidas().size();i++){
+            jogadorAtualizar.setPosicoes(Jogo.getJogo().getPosicoesPreenchidas().get(i)+";");
+        }
         jogadorAtualizar.setPosicoesPreenchidas(Jogo.getJogo().getPosicoesPreenchidas());
         for (Map.Entry<String, ObjectOutputStream> kv : mapOnlines.entrySet()) {
             if (!kv.getKey().equals(jogadorAtualizar.getNome())) {

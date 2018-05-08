@@ -26,7 +26,7 @@ import javax.swing.JPanel;
  * @author Jhonatan Santos
  */
 public class ClienteJogo_Tela extends javax.swing.JFrame implements ActionListener {
-    
+
     JButton[] Botoes;
 
     //Metodo Singleton
@@ -39,21 +39,21 @@ public class ClienteJogo_Tela extends javax.swing.JFrame implements ActionListen
         }
         return clienteJogo_Tela;
     }
-    
+
     public ClienteJogo_Tela() {
-        
+
         initComponents();
         iniciarTabuleiro();
         setLocationRelativeTo(null);
-        
+
     }
 
     //Criando Botoes no Tabuleiro
     public JButton[] criarBotoes() {
         return new JButton[ClienteDados.get().getPosicoesTabuleiro()];
-        
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -273,7 +273,7 @@ public class ClienteJogo_Tela extends javax.swing.JFrame implements ActionListen
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
     }//GEN-LAST:event_formWindowOpened
-    
+
     public void iniciarTabuleiro() {
         int auxLinha = 0, auxColuna = 0, tamanho = 0;
         if (ClienteDados.get().getQtdLinhas() <= 14 && ClienteDados.get().getQtdColunas() <= 29) {
@@ -289,7 +289,7 @@ public class ClienteJogo_Tela extends javax.swing.JFrame implements ActionListen
             auxLinha = calc;
             auxColuna = calc2;
         }
-        
+
         setSize(auxColuna, auxLinha);
         prin.setSize(auxColuna, auxLinha);
         grid.setLayout(new GridLayout(ClienteDados.get().getQtdLinhas(), ClienteDados.get().getQtdColunas(), 2, 2));
@@ -307,7 +307,7 @@ public class ClienteJogo_Tela extends javax.swing.JFrame implements ActionListen
         }
         jListJogadores.setListData(listJogadores);
     }
-    
+
     public void actionPerformed(ActionEvent e) {
         if (ClienteDados.get().getsJogo()) {
             for (int posicao = 0; posicao < ClienteDados.get().getPosicoesTabuleiro(); posicao++) {
@@ -321,7 +321,7 @@ public class ClienteJogo_Tela extends javax.swing.JFrame implements ActionListen
                         setJogador();
                         atualizarStatusJogador(false);
                         jLabelInformacoes.setText("Parabéns você acertou um cruzador +10 pontos! :)");
-                        
+
                     } else if (ClienteDados.get().getnDestroyers().contains(posicao)) {
                         Botoes[posicao].setIcon(new ImageIcon(ClienteJogo_Tela.class.getResource("/Imgs/Destroier.jpg")));
                         ClienteDados.get().setPontos(5);
@@ -331,7 +331,7 @@ public class ClienteJogo_Tela extends javax.swing.JFrame implements ActionListen
                         setJogador();
                         atualizarStatusJogador(false);
                         jLabelInformacoes.setText("Parabéns você acertou um destroyer +5 pontos! :)");
-                        
+
                     } else if (ClienteDados.get().getnPortas().contains(posicao)) { //Se posição contem navio Porta Avioes mostra...
                         Botoes[posicao].setIcon(new ImageIcon(ClienteJogo_Tela.class.getResource("/Imgs/Porta-Aviao.jpg")));
                         ClienteDados.get().setPontos(10);
@@ -341,7 +341,7 @@ public class ClienteJogo_Tela extends javax.swing.JFrame implements ActionListen
                         setJogador();
                         atualizarStatusJogador(false);
                         jLabelInformacoes.setText("Parabéns você acertou um porta-avião +10 pontos! :)");
-                        
+
                     } else {
                         Botoes[posicao].setIcon(new ImageIcon(ClienteJogo_Tela.class.getResource("/Imgs/explosao.jpg")));
                         ClienteDados.get().setErros(1);
@@ -360,28 +360,31 @@ public class ClienteJogo_Tela extends javax.swing.JFrame implements ActionListen
             jLabelInformacoes.setText("Aguarde sua vez de jogar! :(");
         }
     }
-    
+
     public void atualizarTabuleiro() {
-        for (int i = 0; i < ClienteDados.get().getPosicoesPreenchidas().size(); i++) {
-            if (!ClienteDados.get().getPosicoesPreenchidas().contains(ClienteDados.get().getPosicoesAtiradas())) {
-                Botoes[Integer.parseInt(ClienteDados.get().getPosicoesPreenchidas().get(i))].setIcon(new ImageIcon(ClienteJogo_Tela.class
-                        .getResource("/Imgs/preenchido.jpg")));
+        if (!ClienteDados.get().getPosicoes().isEmpty()) {
+            String posicoes[] = ClienteDados.get().getPosicoes().split(";");
+            for (int i = 0; i < posicoes.length; i++) {
+                if (!ClienteDados.get().getPosicoesAtiradas().contains(Integer.parseInt(posicoes[i]))) {
+                    Botoes[Integer.parseInt(posicoes[i])].setIcon(new ImageIcon(ClienteJogo_Tela.class
+                            .getResource("/Imgs/preenchido.jpg")));
+                }
             }
         }
     }
-    
+
     public void atualizarStatusJogador(boolean x) {
         ClienteDados.get().setsJogo(x);
         if (x) {
             jLabelStatus.setText("Sua vez!");
             jPanelStatus.setBackground(Color.GREEN);
-            
+
         } else {
             jLabelStatus.setText("Aguarde!");
             jPanelStatus.setBackground(Color.ORANGE);
         }
     }
-    
+
     public void setJogador() {
         ClienteDados.get().setsJogo(false);
         Dados jogador = new Dados();

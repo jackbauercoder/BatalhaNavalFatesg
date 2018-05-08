@@ -24,8 +24,16 @@ public class Dados implements Serializable {
     //Informações do Jogador
     private int pontos, acertos, erros, id,posicaoTiro,qtdLinhas,qtdColunas,qtdPosicoes;
     private Action action;
-    private String nome;
+    private String nome,posicoes="";
     private boolean sJogo,sStart;
+
+    public String getPosicoes() {
+        return posicoes;
+    }
+
+    public void setPosicoes(String posicoes) {
+        this.posicoes+= posicoes;
+    }
 
     public int getQtdLinhas() {
         return qtdLinhas;

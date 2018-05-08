@@ -15,7 +15,7 @@ import java.util.Random;
 import Server.navio.Navio;
 
 /**
- * zz
+ * 
  *
  * @author Jhonatan.Santos
  */

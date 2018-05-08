@@ -63,23 +63,28 @@ public class ClienteServidor {
             Dados jogador = null;
             try {
                 while ((jogador = (Dados) input.readObject()) != null) {
-                    Dados.Action action = jogador.getAction();
-                    if (action.equals(Dados.Action.CONECTAR)) {
-                        getConectar(jogador);
-
-                    } else if (action.equals(Dados.Action.ATUALIZAR_JOGADORES)) {
-                        getAtualizarJogadores(jogador);
-                    } else if (action.equals(Dados.Action.INICIAR_JOGO)) {
-                        getIniciarJogo(jogador);
-                    } else if (action.equals(Dados.Action.SJOGO)) {
-                        getSjogo(jogador);
-                    } else if (action.equals(Dados.Action.ATUALIZAR_JOGO)) {
-                        getAtualizarJogo(jogador);
+                    
+                    switch (jogador.getAction()) {
+                        case CONECTAR:
+                            getConectar(jogador);
+                            break;
+                        case ATUALIZAR_JOGADORES:
+                            getAtualizarJogadores(jogador);
+                            break;
+                        case INICIAR_JOGO:
+                            getIniciarJogo(jogador);
+                            break;
+                        case SJOGO:
+                            getSjogo(jogador);
+                            break;
+                        case ATUALIZAR_JOGO:
+                            getAtualizarJogo(jogador);
+                            break;
+                        default:
+                            break;
                     }
                 }
-            } catch (IOException ex) {
-
-            } catch (ClassNotFoundException ex) {
+            } catch (IOException | ClassNotFoundException ex) {
 
             }
 
@@ -110,8 +115,8 @@ public class ClienteServidor {
     }
 
     public void getAtualizarJogo(Dados jogador) {
-        ClienteDados.get().setPosicoesPreenchidas(jogador.getPosicoesPreenchidas());
-        //ClienteJogo_Tela.get().atualizarTabuleiro();
+        ClienteDados.get().setPosicoes(jogador.getPosicoes());
+        ClienteJogo_Tela.get().atualizarTabuleiro();
     }
 
     public void setAtualizarJogo(Dados jogador) {

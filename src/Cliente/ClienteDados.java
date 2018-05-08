@@ -24,7 +24,7 @@ public class ClienteDados {
     //Informações do Jogador
     private int pontos, acertos, erros, id, posicaoTiro, qtdLinhas, qtdColunas, ip,posicoesTabuleiro;
     private Action action;
-    private String nome;
+    private String nome,posicoes = "";
     private boolean sJogo, sStart;
     //Metodo Singleton
     private static ClienteDados clienteDados = null;
@@ -35,6 +35,14 @@ public class ClienteDados {
             clienteDados = new ClienteDados();
         }
         return clienteDados;
+    }
+
+    public String getPosicoes() {
+        return posicoes;
+    }
+
+    public void setPosicoes(String posicoes) {
+        this.posicoes = posicoes;
     }
 
     public ArrayList<String> getStatusJogadores() {
