@@ -150,8 +150,8 @@ public class ServidorSocket extends javax.swing.JFrame {
     public void getSjogo(Dados jogador) {
         Jogo.getJogo().getStatusJogo(jogador.getId());
         Jogo.getJogo().setPosicoesPreenchidas(String.valueOf(jogador.getPosicaoTiro()));
-        setSjogo();
         setAtualizarJogo();
+        setSjogo();
     }
 
     public void setConectar(Dados jogador, ObjectOutputStream output) {
@@ -225,8 +225,8 @@ public class ServidorSocket extends javax.swing.JFrame {
     public void setAtualizarJogo() {
         Dados jogadorAtualizar = new Dados();
         jogadorAtualizar.setAction(Action.ATUALIZAR_JOGO);
-        for(int i=0;i<Jogo.getJogo().getPosicoesPreenchidas().size();i++){
-            jogadorAtualizar.setPosicoes(Jogo.getJogo().getPosicoesPreenchidas().get(i)+";");
+        for (int i = 0; i < Jogo.getJogo().getPosicoesPreenchidas().size(); i++) {
+            jogadorAtualizar.setPosicoes(Jogo.getJogo().getPosicoesPreenchidas().get(i) + ";");
         }
         jogadorAtualizar.setPosicoesPreenchidas(Jogo.getJogo().getPosicoesPreenchidas());
         for (Map.Entry<String, ObjectOutputStream> kv : mapOnlines.entrySet()) {

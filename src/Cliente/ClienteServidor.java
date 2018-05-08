@@ -131,7 +131,6 @@ public class ClienteServidor {
     public void getSjogo(Dados jogador) {
         ClienteDados.get().setsJogo(true);
         ClienteJogo_Tela.get().atualizarStatusJogador(true);
-        ClienteDados.get().setPosicoesPreenchidas(jogador.getPosicoesPreenchidas());
         ClienteJogo_Tela.get().atualizarTabuleiro();
     }
 

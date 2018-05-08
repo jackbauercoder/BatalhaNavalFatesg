@@ -312,50 +312,54 @@ public class ClienteJogo_Tela extends javax.swing.JFrame implements ActionListen
         if (ClienteDados.get().getsJogo()) {
             for (int posicao = 0; posicao < ClienteDados.get().getPosicoesTabuleiro(); posicao++) {
                 if (e.getSource() == Botoes[posicao]) {
-                    if (ClienteDados.get().getnCruzados().contains(posicao)) {
-                        Botoes[posicao].setIcon(new ImageIcon(ClienteJogo_Tela.class.getResource("/Imgs/Cruzador.jpg")));
-                        ClienteDados.get().setPontos(10);
-                        ClienteDados.get().setAcertos(1);
-                        ClienteDados.get().setPosicoesAtiradas(posicao);
-                        ClienteDados.get().setPosicaoTiro(posicao);
-                        setJogador();
-                        atualizarStatusJogador(false);
-                        jLabelInformacoes.setText("Parabéns você acertou um cruzador +10 pontos! :)");
+                    if (!ClienteDados.get().getPosicoesAtiradas().contains(posicao)) {
+                        if (ClienteDados.get().getnCruzados().contains(posicao)) {
+                            Botoes[posicao].setIcon(new ImageIcon(ClienteJogo_Tela.class.getResource("/Imgs/Cruzador.jpg")));
+                            ClienteDados.get().setPontos(10);
+                            ClienteDados.get().setAcertos(1);
+                            ClienteDados.get().setPosicoesAtiradas(posicao);
+                            ClienteDados.get().setPosicaoTiro(posicao);
+                            setJogador();
+                            atualizarStatusJogador(false);
+                            jLabelInformacoes.setText("Parabéns você acertou um cruzador +10 pontos! :)");
 
-                    } else if (ClienteDados.get().getnDestroyers().contains(posicao)) {
-                        Botoes[posicao].setIcon(new ImageIcon(ClienteJogo_Tela.class.getResource("/Imgs/Destroier.jpg")));
-                        ClienteDados.get().setPontos(5);
-                        ClienteDados.get().setAcertos(1);
-                        ClienteDados.get().setPosicoesAtiradas(posicao);
-                        ClienteDados.get().setPosicaoTiro(posicao);
-                        setJogador();
-                        atualizarStatusJogador(false);
-                        jLabelInformacoes.setText("Parabéns você acertou um destroyer +5 pontos! :)");
+                        } else if (ClienteDados.get().getnDestroyers().contains(posicao)) {
+                            Botoes[posicao].setIcon(new ImageIcon(ClienteJogo_Tela.class.getResource("/Imgs/Destroier.jpg")));
+                            ClienteDados.get().setPontos(5);
+                            ClienteDados.get().setAcertos(1);
+                            ClienteDados.get().setPosicoesAtiradas(posicao);
+                            ClienteDados.get().setPosicaoTiro(posicao);
+                            setJogador();
+                            atualizarStatusJogador(false);
+                            jLabelInformacoes.setText("Parabéns você acertou um destroyer +5 pontos! :)");
 
-                    } else if (ClienteDados.get().getnPortas().contains(posicao)) { //Se posição contem navio Porta Avioes mostra...
-                        Botoes[posicao].setIcon(new ImageIcon(ClienteJogo_Tela.class.getResource("/Imgs/Porta-Aviao.jpg")));
-                        ClienteDados.get().setPontos(10);
-                        ClienteDados.get().setAcertos(1);
-                        ClienteDados.get().setPosicoesAtiradas(posicao);
-                        ClienteDados.get().setPosicaoTiro(posicao);
-                        setJogador();
-                        atualizarStatusJogador(false);
-                        jLabelInformacoes.setText("Parabéns você acertou um porta-avião +10 pontos! :)");
+                        } else if (ClienteDados.get().getnPortas().contains(posicao)) { //Se posição contem navio Porta Avioes mostra...
+                            Botoes[posicao].setIcon(new ImageIcon(ClienteJogo_Tela.class.getResource("/Imgs/Porta-Aviao.jpg")));
+                            ClienteDados.get().setPontos(10);
+                            ClienteDados.get().setAcertos(1);
+                            ClienteDados.get().setPosicoesAtiradas(posicao);
+                            ClienteDados.get().setPosicaoTiro(posicao);
+                            setJogador();
+                            atualizarStatusJogador(false);
+                            jLabelInformacoes.setText("Parabéns você acertou um porta-avião +10 pontos! :)");
 
+                        } else {
+                            Botoes[posicao].setIcon(new ImageIcon(ClienteJogo_Tela.class.getResource("/Imgs/explosao.jpg")));
+                            ClienteDados.get().setErros(1);
+                            ClienteDados.get().setPosicoesAtiradas(posicao);
+                            ClienteDados.get().setPosicaoTiro(posicao);
+                            setJogador();
+                            atualizarStatusJogador(false);
+                            jLabelInformacoes.setText("Que pena você erro o alvo! :(");
+                        }
                     } else {
-                        Botoes[posicao].setIcon(new ImageIcon(ClienteJogo_Tela.class.getResource("/Imgs/explosao.jpg")));
-                        ClienteDados.get().setErros(1);
-                        ClienteDados.get().setPosicoesAtiradas(posicao);
-                        ClienteDados.get().setPosicaoTiro(posicao);
-                        setJogador();
-                        atualizarStatusJogador(false);
-                        jLabelInformacoes.setText("Que pena você erro o alvo! :(");
+                        jLabelInformacoes.setText("Posição ja Preenchida! :(");
                     }
                 }
+                jLabelPontos.setText(String.valueOf(ClienteDados.get().getPontos()));
+                jLabelAcertos.setText(String.valueOf(ClienteDados.get().getAcertos()));
+                jLabelErros.setText(String.valueOf(ClienteDados.get().getErros()));
             }
-            jLabelPontos.setText(String.valueOf(ClienteDados.get().getPontos()));
-            jLabelAcertos.setText(String.valueOf(ClienteDados.get().getAcertos()));
-            jLabelErros.setText(String.valueOf(ClienteDados.get().getErros()));
         } else {
             jLabelInformacoes.setText("Aguarde sua vez de jogar! :(");
         }
@@ -368,6 +372,7 @@ public class ClienteJogo_Tela extends javax.swing.JFrame implements ActionListen
                 if (!ClienteDados.get().getPosicoesAtiradas().contains(Integer.parseInt(posicoes[i]))) {
                     Botoes[Integer.parseInt(posicoes[i])].setIcon(new ImageIcon(ClienteJogo_Tela.class
                             .getResource("/Imgs/preenchido.jpg")));
+                    ClienteDados.get().setPosicoesAtiradas(Integer.parseInt(posicoes[i]));
                 }
             }
         }

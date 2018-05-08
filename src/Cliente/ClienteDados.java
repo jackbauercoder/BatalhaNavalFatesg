@@ -16,7 +16,7 @@ public class ClienteDados {
     //Informações do Jogo
     private ArrayList<String> listJogadores = new ArrayList<String>();
     private ArrayList<String> statusJogadores = new ArrayList<String>();
-    private ArrayList<String> posicoesPreenchidas = new ArrayList<String>();
+    private ArrayList<Integer> posicoesPreenchidas = new ArrayList<Integer>();
     private ArrayList<Integer> posicoesAtiradas = new ArrayList<Integer>();
     private ArrayList<Integer> nCruzados = new ArrayList<Integer>();
     private ArrayList<Integer> nDestroyers = new ArrayList<Integer>();
@@ -101,14 +101,15 @@ public class ClienteDados {
         this.listJogadores = listJogadores;
     }
 
-    public ArrayList<String> getPosicoesPreenchidas() {
+    public ArrayList<Integer> getPosicoesPreenchidas() {
         return posicoesPreenchidas;
     }
 
-    public void setPosicoesPreenchidas(ArrayList<String> posicoesPreenchidas) {
-        this.posicoesPreenchidas = posicoesPreenchidas;
+    public void setPosicoesPreenchidas(int posicao) {
+        this.posicoesPreenchidas.add(posicao);
     }
 
+    
    
 
     public ArrayList<Integer> getnCruzados() {
