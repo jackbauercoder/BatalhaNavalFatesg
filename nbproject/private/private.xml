@@ -9,9 +9,12 @@
             <file>file:/C:/Users/diogo/Documents/NetBeansProjects/BatalhaNavalVF/src/Client/DataJogador.java</file>
         </group>
         <group>
+            <file>file:/C:/Users/STA-MAQUINAS/Desktop/BatalhaNavalFatesg-master/src/DataDados/Dados.java</file>
             <file>file:/C:/Users/STA-MAQUINAS/Desktop/BatalhaNavalFatesg-master/src/Server/Jogo.java</file>
-            <file>file:/C:/Users/STA-MAQUINAS/Desktop/BatalhaNavalFatesg-master/src/Cliente/ClienteServidor.java</file>
             <file>file:/C:/Users/STA-MAQUINAS/Desktop/BatalhaNavalFatesg-master/src/Server/ServidorSocket.java</file>
+            <file>file:/C:/Users/STA-MAQUINAS/Desktop/BatalhaNavalFatesg-master/src/MaquinaVirtual/Maquina.java</file>
+            <file>file:/C:/Users/STA-MAQUINAS/Desktop/BatalhaNavalFatesg-master/src/Cliente/ClienteJogo_Tela.java</file>
+            <file>file:/C:/Users/STA-MAQUINAS/Desktop/BatalhaNavalFatesg-master/src/Cliente/ClienteInicial_Tela.java</file>
         </group>
     </open-files>
 </project-private>
