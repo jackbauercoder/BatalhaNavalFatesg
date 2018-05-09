@@ -394,6 +394,9 @@ public class ClienteJogo_Tela extends javax.swing.JFrame implements ActionListen
         ClienteDados.get().setsJogo(false);
         Dados jogador = new Dados();
         jogador.setAction(Dados.Action.SJOGO);
+        jogador.setPontos(ClienteDados.get().getPontos());
+        jogador.setAcertos(ClienteDados.get().getAcertos());
+        jogador.setErros(ClienteDados.get().getErros());
         jogador.setPosicaoTiro(ClienteDados.get().getPosicaoTiro());
         jogador.setId(ClienteDados.get().getId());
         ClienteServidor.get().setAtualizarJogo(jogador);

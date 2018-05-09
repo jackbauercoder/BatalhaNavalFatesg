@@ -149,6 +149,9 @@ public class ServidorSocket extends javax.swing.JFrame {
 
     public void getSjogo(Dados jogador) {
         Jogo.getJogo().getStatusJogo(jogador.getId());
+        Jogo.getJogo().getListJogadores().get(jogador.getId()).setPontos(jogador.getPontos());
+        Jogo.getJogo().getListJogadores().get(jogador.getId()).setQtdAcertos(jogador.getAcertos());
+        Jogo.getJogo().getListJogadores().get(jogador.getId()).setQtdErros(jogador.getErros());
         Jogo.getJogo().setPosicoesPreenchidas(String.valueOf(jogador.getPosicaoTiro()));
         setAtualizarJogo();
         setSjogo();

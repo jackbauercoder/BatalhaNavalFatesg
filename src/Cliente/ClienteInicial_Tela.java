@@ -50,6 +50,7 @@ public class ClienteInicial_Tela extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Batalha Naval Senai");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,7 +62,7 @@ public class ClienteInicial_Tela extends javax.swing.JFrame {
         jRadio1.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadio1);
         jRadio1.setText("Jogador Vs Maquina");
-        jPanel3.add(jRadio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+        jPanel3.add(jRadio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
 
         jRadio2.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadio2);
@@ -71,9 +72,9 @@ public class ClienteInicial_Tela extends javax.swing.JFrame {
                 jRadio2ActionPerformed(evt);
             }
         });
-        jPanel3.add(jRadio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
+        jPanel3.add(jRadio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 290, 90));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 290, 80));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Dados do Jogador", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
@@ -92,13 +93,13 @@ public class ClienteInicial_Tela extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 290, -1));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 290, 80));
 
         jPanelTabuleiro.setBackground(new java.awt.Color(255, 255, 255));
         jPanelTabuleiro.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Tabuleiro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
@@ -157,15 +158,16 @@ public class ClienteInicial_Tela extends javax.swing.JFrame {
                 .addGap(31, 31, 31))
         );
 
-        jPanel1.add(jPanelTabuleiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 290, 90));
+        jPanel1.add(jPanelTabuleiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 290, 90));
 
+        jButton1.setBackground(new java.awt.Color(0, 255, 0));
         jButton1.setText("Iniciar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 160, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 160, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -175,7 +177,7 @@ public class ClienteInicial_Tela extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
         );
 
         pack();
