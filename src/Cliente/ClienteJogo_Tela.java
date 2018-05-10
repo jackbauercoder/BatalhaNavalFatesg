@@ -401,6 +401,12 @@ public class ClienteJogo_Tela extends javax.swing.JFrame implements ActionListen
         jogador.setId(ClienteDados.get().getId());
         ClienteServidor.get().setAtualizarJogo(jogador);
     }
+    
+    public void setFinal(){
+        ClienteFinal_Tela clienteFinal = new ClienteFinal_Tela();
+        clienteFinal.setVisible(true);
+        setVisible(false);
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

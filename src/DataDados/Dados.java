@@ -183,6 +183,6 @@ public class Dados implements Serializable {
         this.sStart = sStart;
     }
     public enum Action{
-        CONECTAR,DESCONECTAR,SSTART,SJOGO,ATUALIZAR_JOGADORES,ATUALIZAR_JOGO,INICIAR_JOGO
+        CONECTAR,DESCONECTAR,SSTART,SJOGO,ATUALIZAR_JOGADORES,ATUALIZAR_JOGO,INICIAR_JOGO,FINAL
     }
 }

@@ -154,7 +154,25 @@ public class ServidorSocket extends javax.swing.JFrame {
         Jogo.getJogo().getListJogadores().get(jogador.getId()).setQtdErros(jogador.getErros());
         Jogo.getJogo().setPosicoesPreenchidas(String.valueOf(jogador.getPosicaoTiro()));
         setAtualizarJogo();
-        setSjogo();
+        if (Jogo.getJogo().isFinaly()) {
+            setFinaly();
+        } else {
+            setSjogo();
+        }
+    }
+
+    public void setFinaly() {
+        Dados jogadores = new Dados();
+        jogadores.setAction(Action.FINAL);
+        for (Map.Entry<String, ObjectOutputStream> kv : mapOnlines.entrySet()) {
+            if (!kv.getKey().equals(jogadores.getNome())) {
+                try {
+                    kv.getValue().writeObject(jogadores);
+                } catch (IOException ex) {
+                    Logger.getLogger(ServidorSocket.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }
 
     public void setConectar(Dados jogador, ObjectOutputStream output) {

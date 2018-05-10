@@ -63,7 +63,7 @@ public class ClienteServidor {
             Dados jogador = null;
             try {
                 while ((jogador = (Dados) input.readObject()) != null) {
-                    
+
                     switch (jogador.getAction()) {
                         case CONECTAR:
                             getConectar(jogador);
@@ -80,6 +80,8 @@ public class ClienteServidor {
                         case ATUALIZAR_JOGO:
                             getAtualizarJogo(jogador);
                             break;
+                        case FINAL:
+                               getFinal();
                         default:
                             break;
                     }
@@ -119,6 +121,10 @@ public class ClienteServidor {
         ClienteJogo_Tela.get().atualizarTabuleiro();
     }
 
+    public void getFinal(){
+        ClienteJogo_Tela.get().setFinal();
+    }
+    
     public void setAtualizarJogo(Dados jogador) {
         try {
 

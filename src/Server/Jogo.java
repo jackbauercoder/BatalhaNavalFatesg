@@ -15,7 +15,7 @@ import java.util.Random;
 import Server.navio.Navio;
 
 /**
- * 
+ *
  *
  * @author Jhonatan.Santos
  */
@@ -25,6 +25,17 @@ public class Jogo {
     private ArrayList<Jogadores> listJogadores = new ArrayList<Jogadores>();
     private ArrayList<Navio> listNavios = new ArrayList<Navio>();
     private ArrayList<String> posicoesPreenchidas = new ArrayList<String>();
+    private boolean finaly = false;
+
+    public boolean isFinaly() {
+        return finaly;
+    }
+
+    public void setFinaly(boolean finaly) {
+        this.finaly = finaly;
+    }
+
+   
 
     public ArrayList<String> getPosicoesPreenchidas() {
         return posicoesPreenchidas;
@@ -32,10 +43,12 @@ public class Jogo {
 
     public void setPosicoesPreenchidas(String tiro) {
         this.posicoesPreenchidas.add(tiro);
+        if (posicoesPreenchidas.size() >= getQtdPosicoes()) {
+            setFinaly(true);
+        }
     }
     private int qtdPosicoes = 0, qtdLinhas, qtdColunas;
 
-    
     public int getQtdLinhas() {
         return qtdLinhas;
     }
